@@ -14,6 +14,7 @@ function Upload() {
                 table.setAttribute("id", "MainTable");
                 //process csv removing \n
                 var rows = e.target.result.split("\n");
+                var tr = document.createElement('tr');
 
                 //create the table cell
                 for (var i = 0; i < rows.length; i++) {
@@ -27,6 +28,20 @@ function Upload() {
                             //populate the cell
                             cell.innerHTML = cells[j];
                         }
+                        var cell = row.insertCell(-1);
+                        if (i > 0) {
+                            var checkbox = document.createElement('input');
+                            checkbox.type = "checkbox";
+                            checkbox.name = "name";
+                            checkbox.value = "value";
+                            checkbox.id = "id";
+                            cell.appendChild(checkbox);
+                            
+                        }
+                        else{
+                            
+                            cell.innerHTML = "On/Off"
+                        }
                     }
                 }
                 // find element with dvcsv
@@ -36,24 +51,11 @@ function Upload() {
                 // insert table inside that element
                 dvCSV.appendChild(table);
                 
-                var SwitchCell = GetCellValues();
-                // alert(SwitchCell); debug buat check row keberapa ada on/off
-
+                
+                
                 
 
-                //first try to coloring it
-                // var tableID = document.getElementById('MainTable');
-                // var tbody = tableID.getElementsByTagName('tbody')[0];
-                // var cells = tbody.getElementsByTagName('td');
 
-                // for (var i=0, len=cells.length; i<len; i++){
-                //     if (parseInt(cells[i].innerHTML,10) > 5){
-                //         cells[i].className = 'red';
-                //     }
-                //     else if (parseInt(cells[i].innerHTML,10) < -5){
-                //         cells[i].className = 'green';
-                //     }
-                // }
 
 
             //end reader on load           
@@ -68,16 +70,3 @@ function Upload() {
 }
 
 
-//getting top cell value for coloring
-function GetCellValues() {
-    var table = document.getElementById('MainTable');
-    var r = 0;
-        for (var c = 0, m = table.rows[r].cells.length; c < m; c++) {
-            //value to return
-            if (table.rows[r].cells[c].innerText == "On/Off"){
-                //alert(table.rows[r].cells[c].innerHTML); debug text
-                return(c);
-            }
-        
-    }
-}
