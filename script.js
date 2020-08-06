@@ -36,7 +36,10 @@ function Upload() {
                 // insert table inside that element
                 dvCSV.appendChild(table);
                 
-                GetCellValues();
+                var SwitchCell = GetCellValues();
+                // alert(SwitchCell); debug buat check row keberapa ada on/off
+
+                
 
                 //first try to coloring it
                 // var tableID = document.getElementById('MainTable');
@@ -71,8 +74,8 @@ function GetCellValues() {
     var r = 0;
         for (var c = 0, m = table.rows[r].cells.length; c < m; c++) {
             //value to return
-            if (table.rows[r].cells[c].innerHTML == "On/Off"){
-                alert(table.rows[r].cells[c].innerHTML)
+            if (table.rows[r].cells[c].innerText == "On/Off"){
+                //alert(table.rows[r].cells[c].innerHTML); debug text
                 return(c);
             }
         
