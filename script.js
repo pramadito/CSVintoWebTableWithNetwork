@@ -16,6 +16,7 @@ function Upload() {
                 //process csv removing \n
                 var rows = e.target.result.split("\n");
                 var tr = document.createElement('tr');
+                var Cell_id = 0;
 
                 //create the table cell
                 for (var i = 0; i < rows.length; i++) {
@@ -24,6 +25,7 @@ function Upload() {
                     //more than 1 column
                     if (cells.length > 1) {
                         var row = table.insertRow(-1);
+                        
                         for (var j = 0; j < cells.length; j++) {
                             var cell = row.insertCell(-1);
                             //populate the cell
@@ -37,17 +39,19 @@ function Upload() {
                                 //creating checkbox after title
                                 var checkbox = document.createElement('input');
                                 checkbox.type = "checkbox";
-                                checkbox.name = "name";
-                                checkbox.value = "value";
-                                // give uniqueid // TODO: give unique letter too
-                                // TODO: Give color
-                                checkbox.id = "checkboxid" + i; 
+                                //checkbox.name = "name";
+                                //checkbox.value = "value";
+                                // give uniqueid 
+                                // TODO: Give color when clicked
+                                checkbox.id = "checkboxid" + Cell_id; 
                                 cell.appendChild(checkbox);
+                                Cell_id++;
                                 
                             }
                             else{                           
                                 cell.innerHTML = "On/Off"
                             }
+                            
                         }
                         
                         
@@ -79,3 +83,10 @@ function Upload() {
 }
 
 
+$(document).ready(function(){
+    $('#MainTable').on('change', ':checkbox', function() {
+        $(this).closest('td').toggleClass('selected', this.checked);
+        $(this).closest('td').prev('td').toggleClass('selected', this.checked);
+    })
+    .find(':checkbox').trigger('change');
+    });
