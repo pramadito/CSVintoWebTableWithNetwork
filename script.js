@@ -10,6 +10,7 @@ function Upload() {
             //load table (function (e) is fuction event happen)
             reader.onload = function (e) {
                 //creating table
+                var row_id = 1;
                 var table = document.createElement("table");
                 table.setAttribute("id", "MainTable");
                 //process csv removing \n
@@ -20,28 +21,36 @@ function Upload() {
                 for (var i = 0; i < rows.length; i++) {
                     //split list by , then insert it to cell
                     var cells = rows[i].split(",");
-                    //more than 1 coloum
+                    //more than 1 column
                     if (cells.length > 1) {
                         var row = table.insertRow(-1);
                         for (var j = 0; j < cells.length; j++) {
                             var cell = row.insertCell(-1);
                             //populate the cell
                             cell.innerHTML = cells[j];
-                        }
-                        var cell = row.insertCell(-1);
-                        if (i > 0) {
-                            var checkbox = document.createElement('input');
-                            checkbox.type = "checkbox";
-                            checkbox.name = "name";
-                            checkbox.value = "value";
-                            checkbox.id = "id";
-                            cell.appendChild(checkbox);
+
+                            //creating checkbox each
+                            var cell = row.insertCell(-1);
                             
+                            if (i > 0) {
+
+                                //creating checkbox after title
+                                var checkbox = document.createElement('input');
+                                checkbox.type = "checkbox";
+                                checkbox.name = "name";
+                                checkbox.value = "value";
+                                // give uniqueid // TODO: give unique letter too
+                                // TODO: Give color
+                                checkbox.id = "checkboxid" + i; 
+                                cell.appendChild(checkbox);
+                                
+                            }
+                            else{                           
+                                cell.innerHTML = "On/Off"
+                            }
                         }
-                        else{
-                            
-                            cell.innerHTML = "On/Off"
-                        }
+                        
+                        
                     }
                 }
                 // find element with dvcsv
