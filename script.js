@@ -39,17 +39,15 @@ function Upload() {
                                 //creating checkbox after title
                                 var checkbox = document.createElement('input');
                                 checkbox.type = "checkbox";
-                                //checkbox.name = "name";
-                                //checkbox.value = "value";
+
                                 // give uniqueid 
-                                // TODO: Give color when clicked
                                 checkbox.id = "checkboxid" + Cell_id; 
                                 cell.appendChild(checkbox);
                                 Cell_id++;
                                 
                             }
                             else{                           
-                                cell.innerHTML = "On/Off"
+                                cell.innerHTML = "On/Off";
                             }
                             
                         }
@@ -83,10 +81,3 @@ function Upload() {
 }
 
 
-$(document).ready(function(){
-    $('#MainTable').on('change', ':checkbox', function() {
-        $(this).closest('td').toggleClass('selected', this.checked);
-        $(this).closest('td').prev('td').toggleClass('selected', this.checked);
-    })
-    .find(':checkbox').trigger('change');
-    });
