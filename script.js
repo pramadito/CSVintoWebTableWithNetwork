@@ -1,3 +1,5 @@
+
+// creating table from CSV To Excel and add buttons too
 function Upload() {
     var fileUpload = document.getElementById("fileUpload");
     //check file if it's valid name and data type
@@ -10,7 +12,7 @@ function Upload() {
             //load table (function (e) is fuction event happen)
             reader.onload = function (e) {
                 //creating table
-                var row_id = 1;
+                
                 var table = document.createElement("table");
                 table.setAttribute("id", "MainTable");
                 //process csv removing \n
@@ -35,7 +37,6 @@ function Upload() {
                             var cell = row.insertCell(-1);
                             
                             if (i > 0) {
-
                                 //creating checkbox after title
                                 var checkbox = document.createElement('input');
                                 checkbox.type = "checkbox";
@@ -43,16 +44,12 @@ function Upload() {
                                 // give uniqueid 
                                 checkbox.id = "checkboxid" + Cell_id; 
                                 cell.appendChild(checkbox);
-                                Cell_id++;
-                                
+                                Cell_id++;                        
                             }
                             else{                           
                                 cell.innerHTML = "On/Off";
-                            }
-                            
-                        }
-                        
-                        
+                            }   
+                        }                    
                     }
                 }
                 // find element with dvcsv
@@ -61,14 +58,7 @@ function Upload() {
                 dvCSV.innerHTML = "";
                 // insert table inside that element
                 dvCSV.appendChild(table);
-                
-                
-                
-                
-
-
-
-
+  
             //end reader on load           
             }
             reader.readAsText(fileUpload.files[0]);
