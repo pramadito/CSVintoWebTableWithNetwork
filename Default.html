@@ -2,19 +2,24 @@
 <html lang="en">
 <head>
     <title></title>
+    <!-- css -->
     <link rel="stylesheet" href="style.css">
+    <!-- library for jquery -->
     <script src="jquery-3.5.1.min.js"></script>
+    <!-- script for making the table -->
     <script src="script.js" async></script>
+    <!-- script for jquery -->
     <script src="jquery-script.js"></script>
+    <!-- for connection for server -->
     <script src="connection.js"></script>
 </head>
 <body>
     <!-- TODO : make good css and make good javascript -->
     <input type="file" id="fileUpload" />
     <!--when clicked run the javascript-->
-    <input type="button" id="upload" value="Upload" onclick="Upload()" />
-    <!-- entire dynamic table for this CSV -->
+    <input type="button" id="uploadButton" value="Upload" onclick="Upload()" />
     <hr/>
+    <!-- entire dynamic table for this CSV -->
     <div id="dvCSV">
     </div>
     
