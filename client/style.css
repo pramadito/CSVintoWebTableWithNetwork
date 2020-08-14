@@ -1,0 +1,28 @@
+
+/* FIXME basic table css to make it at least usable  */
+body
+{
+    font-family: Arial;
+    font-size: 10pt;
+}
+table
+{
+    border-collapse: collapse;
+    width: 100%;
+}
+table, th, td 
+{
+    border: 1px solid #ccc;
+}
+table td
+{
+    padding: 5px;
+}
+
+/* FIXME END basic table css to make it at least usable */
+  
+/* For at least we know where our mouse are*/
+tr:hover {background-color:#f5f5f5;}
+
+/* this one is to change table color using jquery */
+.selected {background-color: #FE3E3E;}

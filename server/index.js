@@ -7,13 +7,16 @@ const wss = new WebSocket.Server({port:8082});
 wss.on("connection", ws =>{
     console.log("New client connected!");
 
-    //sending data to console
-    ws.on("message", data => {
-        console.log(`Client has sent us: ${data}`);
-
-        ws.send(data.toUpperCase());
-    })
-
+    //broadcast all data except itself
+   ws.on('message', function incoming(file) {
+      console.log("recieved the data")
+      wss.clients.forEach(function each(client) {
+        if (client !== ws && client.readyState === WebSocket.OPEN) {
+          client.send(data);
+          
+        }
+      });
+    });
 
     //check when the client lost connection from the server
     
