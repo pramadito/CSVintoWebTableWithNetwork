@@ -1,14 +1,21 @@
 // yeah maybe i should put it in other file
 const ws = new WebSocket("ws://localhost:8082");
 
-
+//
 ws.addEventListener("open", () => {
     console.log("We are connected");
 });
 
-ws.addEventListener("message", ({data}) => {
-    console.log(data);
-});
+
+//for recieving data from server in real time
+/* ws.addEventListener("message", ({file}) => {
+    console.log(file);
+}); */
+
+exampleSocket.onmessage = function (event) {
+    console.log(event.data);
+}
+
 
 //make the event refresh add the document
 var reader = new FileReader();

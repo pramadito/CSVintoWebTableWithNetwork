@@ -16,7 +16,7 @@ function Upload() {
         if (typeof (FileReader) != "undefined") {
             //load file
             var reader = new FileReader();
-            //load table (function (e) is fuction event happen)
+            //load table (function (e) is function event happen)
             reader.onload = function (e) {
                 //creating table
                 
@@ -77,11 +77,14 @@ function Upload() {
     }
 }
 
+
+// TODO and FIXME : i should use json parsing maybe? this one is just input all the file into server 
 function UploadToServerCSV(){
     var file = document.querySelector('input[type="file"]').files[0];
-    ws.send(file);
+    ws.send(file); // yes this one
     console.log("Sending data to server..");
 }
+
 
 function OnLoadCSVTable(){
     var checkbox = document.querySelector("input[name=checkbox]");
